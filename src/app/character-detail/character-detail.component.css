@@ -10,3 +10,9 @@ caption {
   display: block;
   margin: auto;
 }
+
+#animate-button {
+  display: block;
+  margin: auto;
+  border: 1px solid black;
+}

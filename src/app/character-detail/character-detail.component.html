@@ -1,9 +1,10 @@
 <div *ngIf="character; else noCharacter" >
   <h1>Will {{character.name}} rule the Universe?</h1>
-  <div>
+  <button class="btn primary" (click)="animate()" id="animate-button">Animate {{character.name}}!</button>
+  <div [@rotatedState]='state'>
     <figure>
       <img [src]="character.largeImageUrl">
-      <caption>{{character.name}}</caption>
+      <!-- <caption>{{character.name}}</caption> -->
     </figure>
   </div>
   <div>

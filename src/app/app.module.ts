@@ -9,6 +9,7 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { CharacterListComponent } from './character-list/character-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [{
   path: '', component: SplashComponent
@@ -30,6 +31,7 @@ const routes: Routes = [{
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
