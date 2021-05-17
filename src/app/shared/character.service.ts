@@ -65,7 +65,7 @@ export class CharacterService {
     let url = 'https:gateway.marvel.com/v1/public/characters?ts='+ts+'&apikey='+publicKey+'&hash='+hash;
 
     if (searchItem) {
-      url +=  "&name="+searchItem;
+      url +=  "&nameStartsWith="+searchItem;
     }
     if (offset) {
       url += "&offset="+offset;
