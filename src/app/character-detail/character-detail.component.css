@@ -18,3 +18,10 @@ caption {
   margin-bottom: 10px;
 
 }
+
+#details-text {
+  display: block;
+  margin: auto;
+  max-width: 400px;
+  text-align: left;
+}
