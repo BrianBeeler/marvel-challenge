@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CharacterService } from '../shared/character.service';
 import { Character } from '../shared/character.model'
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.css']
 })
-export class CharacterListComponent implements OnInit {
+export class CharacterListComponent implements OnInit, OnDestroy {
 
   constructor(private charService: CharacterService, private router: Router) { }
 
@@ -64,11 +64,15 @@ export class CharacterListComponent implements OnInit {
   }
 
   activePage = 1;
+  charSubscription;
 
   ngOnInit(): void {
-    this.charService.characterListChanged.subscribe(()=> {
+    this.charSubscription = this.charService.characterListChanged.subscribe(()=> {
       this.characterList = this.charService.getCharacterList();
     })
+  }
+  ngOnDestroy(): void {
+    this.charSubscription.unsubscribe()
   }
 
 }
