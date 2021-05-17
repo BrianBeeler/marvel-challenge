@@ -4,6 +4,7 @@ import { Character } from '../shared/character.model'
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
+
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
@@ -40,6 +41,24 @@ export class CharacterListComponent implements OnInit {
     this.charService.selectCharacter(id)
     this.router.navigate(['character-detail'])
   }
+
+  getPagination() {
+
+    let total = this.charService.getTotalCharacters();
+    let numberPerPage = 20;
+
+    let pages = [];
+    let x = 1;
+    for (let i=1; i<= total; i+= numberPerPage) {
+      pages.push(x)
+      x+=1;
+    }
+    return pages;
+
+  }
+
+  activePage = 1;
+
   ngOnInit(): void {
     this.charService.characterListChanged.subscribe(()=> {
       this.characterList = this.charService.getCharacterList();

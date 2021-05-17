@@ -57,3 +57,32 @@ li {
   margin: auto;
 
 }
+
+#pagination li {
+  text-decoration: none;
+  display: inline-block;
+  width: 10px;
+  margin: 6px;
+  text-overflow: wrap;
+}
+
+#pagination {
+  padding-inline-start: 0px;
+}
+
+#page {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-right: 2rem;
+  text-decoration: underline;
+}
+
+#page-container {
+  width: 90vw;
+  margin-bottom: 10px;
+}
+
+.active {
+  background-color: blue;
+  color: white;
+}

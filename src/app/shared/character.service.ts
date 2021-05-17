@@ -13,15 +13,17 @@ export class CharacterService {
   constructor(private http: HttpClient) { }
 
   characterListHC: Character[] = [
-    new Character("Hulk", 1, 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'The Hulk is Angry'),
-    new Character("Hulk", 2,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'The Hulk is Angry'),
-    new Character("Hulk", 3,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'The Hulk is Angry'),
+    new Character("Hulk", 1, 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
+    new Character("Hulk", 2,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
+    new Character("Hulk", 3,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
   ]
   characterList: Character[] = this.characterListHC;
 
   characterListChanged = new Subject();
 
   selectedCharacter: Character = this.characterList[0];
+
+  apiTotal = null;
 
   listType = {
     current: "hard coded",
@@ -45,6 +47,14 @@ export class CharacterService {
     return this.listType;
   }
 
+  getTotalCharacters() {
+    if (this.listType.current === "hard-coded") {
+      return this.characterList.length;
+    } else {
+      return this.apiTotal;
+    }
+  }
+
   fetchCharacters(searchItem) {
 
     console.log("fetching characters...");
@@ -59,6 +69,9 @@ export class CharacterService {
     }
 
     this.http.get(url).pipe(map((response: any)=> {
+
+      this.apiTotal = response.data.total;
+
       return response.data.results.map((character) => {
 
         let thumbnailUrl = character.thumbnail.path+'/portrait_small.'+character.thumbnail.extension;
