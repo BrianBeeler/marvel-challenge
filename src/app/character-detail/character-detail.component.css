@@ -1,0 +1,12 @@
+img {
+  width: 400px;
+}
+
+h1, figure, h2, p, caption {
+  text-align: center;
+}
+
+caption {
+  display: block;
+  margin: auto;
+}

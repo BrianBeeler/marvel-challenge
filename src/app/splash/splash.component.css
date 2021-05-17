@@ -1,0 +1,15 @@
+.container {
+  background-image: url("https://deadline.com/wp-content/uploads/2018/11/b6e87dcbf8f18a8b2aafea32c335e20c.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+h1 {
+  background-color: black;
+  margin-top: 25px;
+  padding: 10px;
+  top: 10px;
+}

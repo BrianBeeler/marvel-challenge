@@ -1,0 +1,18 @@
+<div id="form-container">
+  <label for="name">Search Characters</label>
+  <input type="text" class="form-control" name="search"  [(ngModel)]="searchTerm">
+  <button class="btn btn-primary" (click)="searchCharacters()">Search</button>
+</div>
+
+<ul class="list-group list-group-horizontal">
+  <li *ngFor="let character of characterList"
+      (click)="selectCharacter(character.id)"
+      class="list-group-item flex-fill"
+      >
+    <figure>
+      <img [src]="character.thumbnailUrl">
+      <caption>{{character.name}}</caption>
+    </figure>
+  </li>
+</ul>
+

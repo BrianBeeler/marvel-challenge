@@ -1,0 +1,45 @@
+img {
+  max-width: 100px;
+}
+
+caption {
+  text-align: center;
+  display: block;
+}
+
+div {
+  display: block;
+  margin: auto;
+  border: black 1px solid;
+  width: 250px;
+  text-align: center;
+}
+
+input {
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-bottom: 10px
+}
+
+figure {
+  text-align: center;
+}
+
+#form-container {
+  display: block;
+  text-align: center;
+}
+
+.list-group {
+  flex-wrap: wrap;
+}
+
+li {
+  margin: 20px;
+  width: 200px;
+}

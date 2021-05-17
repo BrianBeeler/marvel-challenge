@@ -1,0 +1,16 @@
+<div *ngIf="character; else noCharacter" >
+  <h1>Will {{character.name}} rule the Universe?</h1>
+  <div>
+    <figure>
+      <img [src]="character.largeImageUrl">
+      <caption>{{character.name}}</caption>
+    </figure>
+  </div>
+  <div>
+  <h2>Details</h2>
+  <p [innerText]="character.details"></p>
+  </div>
+</div>
+<ng-template #noCharacter>
+  <p>No Character was selected. Go back to the list view and try again.</p>
+</ng-template>
