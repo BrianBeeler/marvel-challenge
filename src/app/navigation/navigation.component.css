@@ -5,3 +5,7 @@
 a {
   margin: 20px;
 }
+
+.navbar-nav {
+  flex-direction: row;
+}

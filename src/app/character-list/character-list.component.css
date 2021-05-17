@@ -33,6 +33,9 @@ figure {
 #form-container {
   display: block;
   text-align: center;
+  margin: auto;
+  margin-top: 25px;
+  padding: 15px;
 }
 
 .list-group {
@@ -42,4 +45,15 @@ figure {
 li {
   margin: 20px;
   width: 200px;
+}
+
+#fetch-button {
+  display: block;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px; */
+
+  margin: auto;
+
 }

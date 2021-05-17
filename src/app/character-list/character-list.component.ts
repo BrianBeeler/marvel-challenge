@@ -14,8 +14,22 @@ export class CharacterListComponent implements OnInit {
   constructor(private charService: CharacterService, private router: Router) { }
 
   characterList: Character[] = this.charService.getCharacterList();
-  characterListUpdated = new Subject<void>();
+  characterListUpdated = this.charService.characterListChanged.subscribe(
+    () => {
+      this.characterList = this.charService.getCharacterList();
+      this.dataType = this.charService.getListType();
+    }
+  );
   searchTerm = '';
+  dataType = this.charService.getListType();
+
+  replace() {
+    if (this.dataType.current == "hard coded") {
+      this.charService.fetchCharacters("");
+    } else {
+      this.charService.useClientData();
+    }
+  }
 
   searchCharacters() {
     console.log("Searching...", this.searchTerm);
