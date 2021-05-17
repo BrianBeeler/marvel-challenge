@@ -26,7 +26,7 @@ export class CharacterListComponent implements OnInit {
 
   replace() {
     if (this.dataType.current == "hard coded") {
-      this.charService.fetchCharacters("");
+      this.charService.fetchCharacters("", null);
     } else {
       this.charService.useClientData();
     }
@@ -34,7 +34,7 @@ export class CharacterListComponent implements OnInit {
 
   searchCharacters() {
     console.log("Searching...", this.searchTerm);
-    this.charService.fetchCharacters(this.searchTerm)
+    this.charService.fetchCharacters(this.searchTerm, null)
   }
 
   selectCharacter(id) {
@@ -55,6 +55,12 @@ export class CharacterListComponent implements OnInit {
     }
     return pages;
 
+  }
+
+  setActivePage(page) {
+    let offset = (page-1)*20;
+    this.charService.fetchCharacters(null, offset);
+    this.activePage = page;
   }
 
   activePage = 1;

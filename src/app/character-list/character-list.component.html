@@ -21,7 +21,7 @@
 <div *ngIf="dataType.current === 'api generated'" id="page-container">
   <p id="page">Page:</p>
   <ul id="pagination">
-    <li *ngFor="let page of getPagination()" [class.active]="page===activePage"><a>{{page}}</a></li>
+    <li *ngFor="let page of getPagination()" ><a [class.active]="page===activePage" (click)="setActivePage(page)">{{page}}</a></li>
   </ul>
 </div>
 

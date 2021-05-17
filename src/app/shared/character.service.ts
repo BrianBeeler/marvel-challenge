@@ -55,7 +55,7 @@ export class CharacterService {
     }
   }
 
-  fetchCharacters(searchItem) {
+  fetchCharacters(searchItem, offset) {
 
     console.log("fetching characters...");
     const ts = + Date.now();
@@ -66,6 +66,9 @@ export class CharacterService {
 
     if (searchItem) {
       url +=  "&name="+searchItem;
+    }
+    if (offset) {
+      url += "&offset="+offset;
     }
 
     this.http.get(url).pipe(map((response: any)=> {
