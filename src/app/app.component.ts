@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
   title = 'marvel-app3';
 
   ngOnInit() {
-
+    this.charService.fetchCharacters('', null);
   }
 }

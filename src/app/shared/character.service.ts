@@ -12,11 +12,7 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  characterListHC: Character[] = [
-    new Character("Hulk", 1, 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
-    new Character("Hulk", 2,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
-    new Character("Hulk", 3,  'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'https://i.ytimg.com/vi/MAfIvBgChjQ/maxresdefault.jpg', 'In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Dr. Robert Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist.'),
-  ]
+  characterListHC: Character[] = [];
   characterList: Character[] = this.characterListHC;
 
   characterListChanged = new Subject();
@@ -25,34 +21,17 @@ export class CharacterService {
 
   apiTotal = null;
 
-  listType = {
-    current: "hard coded",
-    other: "api generated"
-  }
-
   getSelectedCharacter() {
     return this.selectCharacter;
   }
 
   useClientData() {
     this.characterList = this.characterListHC;
-    this.listType = {
-      current: "hard coded",
-      other: "api generated"
-    }
     this.characterListChanged.next();
   }
 
-  getListType() {
-    return this.listType;
-  }
-
   getTotalCharacters() {
-    if (this.listType.current === "hard-coded") {
-      return this.characterList.length;
-    } else {
-      return this.apiTotal;
-    }
+    return this.apiTotal;
   }
 
   fetchCharacters(searchItem, offset) {
@@ -89,18 +68,11 @@ export class CharacterService {
           details = "Does not appear in any comics."
         }
 
-
-
-
         return new Character(character.name || "No Name", character.id, thumbnailUrl,largeImageUrl, details)
       })
     })).subscribe((characters) => {
       this.characterList = characters;
       this.selectedCharacter = this.characterList[0]
-      this.listType = {
-        current: "api generated",
-        other: "hard coded"
-      }
       this.characterListChanged.next();
     }, (error) => {
       alert("There was an error getting the charcter list, see console.")

@@ -24,4 +24,6 @@ caption {
   margin: auto;
   max-width: 400px;
   text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

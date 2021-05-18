@@ -5,7 +5,7 @@
   <button class="btn btn-primary" (click)="searchCharacters()">Search</button>
 </div>
 <hr>
-<button class="btn btn-primary" id="fetch-button" (click)="replace()"> Replace {{dataType.current}} list with {{dataType.other}} list.</button>
+<button class="btn btn-primary" id="fetch-button" (click)="refreshCharacters()"> All Characters</button>
 <hr>
 <ul class="list-group list-group-horizontal">
   <li *ngFor="let character of characterList"
@@ -18,7 +18,7 @@
     </figure>
   </li>
 </ul>
-<div *ngIf="dataType.current === 'api generated'" id="page-container">
+<div id="page-container">
   <p id="page">Page:</p>
   <ul id="pagination">
     <li *ngFor="let page of getPagination()" ><a [class.active]="page===activePage" (click)="setActivePage(page)">{{page}}</a></li>

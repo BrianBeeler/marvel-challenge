@@ -18,18 +18,13 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   characterListUpdated = this.charService.characterListChanged.subscribe(
     () => {
       this.characterList = this.charService.getCharacterList();
-      this.dataType = this.charService.getListType();
     }
   );
   searchTerm = '';
-  dataType = this.charService.getListType();
 
-  replace() {
-    if (this.dataType.current == "hard coded") {
-      this.charService.fetchCharacters("", null);
-    } else {
-      this.charService.useClientData();
-    }
+  refreshCharacters() {
+    this.searchTerm = "";
+    this.charService.fetchCharacters("", null);
   }
 
   searchCharacters() {
@@ -43,7 +38,6 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   getPagination() {
-
     let total = this.charService.getTotalCharacters();
     let numberPerPage = 20;
 

@@ -36,10 +36,14 @@ figure {
   margin: auto;
   margin-top: 25px;
   padding: 15px;
+  width: 90%;
 }
 
 .list-group {
   flex-wrap: wrap;
+  width: 90%;
+  margin-left: 5%;
+  border: 1px solid black;
 }
 
 li {
@@ -68,6 +72,8 @@ li {
 
 #pagination {
   padding-inline-start: 0px;
+  text-align: left;
+  padding: 15px;
 }
 
 #page {
